@@ -52,4 +52,8 @@ The application will run on `http://localhost:3000`.
 - Filters are limited to the years 2023 and 2024 for simplicity.
 - Recharts.js is used for visualization to simplify chart creation and responsiveness.
 
+### Deployed API
+The Dashboard is deployed and accessible at: https://your-app-name.vercel.app/api
+
+
 
