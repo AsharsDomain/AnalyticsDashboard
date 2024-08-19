@@ -15,17 +15,58 @@ function Home({ theme }) {
         barData: [],
     });
 
-    // Fetch data when component mounts
+    // State to manage selected year
+    const [selectedYear, setSelectedYear] = useState('2023');
+
+    // State to manage real-time card values
+    const [counts, setCounts] = useState({
+        posts: 0,
+        engagements: 0,
+        mentions: 0,
+        alerts: 0,
+    });
+
+    // Fetch data when component mounts or when selectedYear changes
     useEffect(() => {
-        fetchMockData().then(fetchedData => {
+        fetchMockData(selectedYear).then(fetchedData => {
             setData(fetchedData);
+            setCounts({
+                posts: fetchedData.products,
+                engagements: fetchedData.categories,
+                mentions: fetchedData.customers,
+                alerts: fetchedData.alerts,
+            });
         });
+    }, [selectedYear]);
+
+    // Handle year change
+    const handleYearChange = (e) => {
+        setSelectedYear(e.target.value);
+    };
+
+    // Increment card values every second
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCounts(prevCounts => ({
+                posts: prevCounts.posts + Math.floor(Math.random() * 10), // Increment by a random number
+                engagements: prevCounts.engagements + Math.floor(Math.random() * 10),
+                mentions: prevCounts.mentions + Math.floor(Math.random() * 10),
+                alerts: prevCounts.alerts + Math.floor(Math.random() * 10),
+            }));
+        }, 1000); // 1 second interval
+
+        return () => clearInterval(interval); // Cleanup on component unmount
     }, []);
 
     return (
         <main className="main-container">
+            
             <div className="main-title">
                 <h3>FOLLOWERS</h3>
+                <select onChange={handleYearChange} value={selectedYear} className="year-filter">
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
             </div>
 
             <div className="main-cards">
@@ -34,28 +75,28 @@ function Home({ theme }) {
                         <h3>POSTS</h3>
                         <BsFillArchiveFill className="card_icon" />
                     </div>
-                    <h1>{data.products}</h1>
+                    <h1>{counts.posts}</h1>
                 </div>
                 <div className="card">
                     <div className="card-inner">
                         <h3>ENGAGEMENTS</h3>
                         <BsFillGrid3X3GapFill className="card_icon" />
                     </div>
-                    <h1>{data.categories}</h1>
+                    <h1>{counts.engagements}</h1>
                 </div>
                 <div className="card">
                     <div className="card-inner">
                         <h3>MENTIONS</h3>
                         <BsPeopleFill className="card_icon" />
                     </div>
-                    <h1>{data.customers}</h1>
+                    <h1>{counts.mentions}</h1>
                 </div>
                 <div className="card">
                     <div className="card-inner">
                         <h3>ALERTS</h3>
                         <BsFillBellFill className="card_icon" />
                     </div>
-                    <h1>{data.alerts}</h1>
+                    <h1>{counts.alerts}</h1>
                 </div>
             </div>
 
@@ -82,46 +123,26 @@ function Home({ theme }) {
 
                 {/* Line Chart */}
                 <ResponsiveContainer width="100%" height={300}>
-                    <LineChart
-                        width={500}
-                        height={300}
-                        data={data.lineData}
-                        margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}
-                    >
+                    <LineChart data={data.lineData}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                        <Line type="monotone" dataKey="Likes" stroke="#8884d8" activeDot={{ r: 8 }} />
+                        <Line type="monotone" dataKey="Comments" stroke="#82ca9d" />
                     </LineChart>
                 </ResponsiveContainer>
 
                 {/* Bar Chart */}
                 <ResponsiveContainer width="100%" height={300}>
-                    <BarChart
-                        width={500}
-                        height={300}
-                        data={data.barData}
-                        margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}
-                    >
+                    <BarChart data={data.barData}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="users" fill="#8884d8" />
+                        <Bar dataKey="New_Users" fill="#8884d8" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>

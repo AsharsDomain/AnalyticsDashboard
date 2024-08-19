@@ -8,9 +8,10 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
   return (
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
-            <div className='sidebar-brand'>
-              <b></b>   AnalyticsDash
-            </div>
+        <div className="main-title">
+    <h3 className="heading-animation">AnalyticsDash</h3>
+</div>
+
             <span className='icon close_icon' onClick={OpenSidebar}>X</span>
         </div>
 
@@ -22,22 +23,22 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                     Products
+                     Overview
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                     Categories
+                     Posts
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                     Customers
+                     Engagement
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                     Inventory
+                     Audience 
                 </a>
             </li>
             <li className='sidebar-list-item'>
@@ -47,7 +48,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                     Setting
+                     Settings
                 </a>
             </li>
         </ul>
