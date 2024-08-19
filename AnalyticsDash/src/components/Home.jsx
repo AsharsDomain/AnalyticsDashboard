@@ -25,27 +25,27 @@ function Home({ theme }) {
     return (
         <main className="main-container">
             <div className="main-title">
-                <h3>DASHBOARD</h3>
+                <h3>FOLLOWERS</h3>
             </div>
 
             <div className="main-cards">
                 <div className="card">
                     <div className="card-inner">
-                        <h3>PRODUCTS</h3>
+                        <h3>POSTS</h3>
                         <BsFillArchiveFill className="card_icon" />
                     </div>
                     <h1>{data.products}</h1>
                 </div>
                 <div className="card">
                     <div className="card-inner">
-                        <h3>CATEGORIES</h3>
+                        <h3>ENGAGEMENTS</h3>
                         <BsFillGrid3X3GapFill className="card_icon" />
                     </div>
                     <h1>{data.categories}</h1>
                 </div>
                 <div className="card">
                     <div className="card-inner">
-                        <h3>CUSTOMERS</h3>
+                        <h3>MENTIONS</h3>
                         <BsPeopleFill className="card_icon" />
                     </div>
                     <h1>{data.customers}</h1>
