@@ -53,6 +53,7 @@ The application will run on `http://localhost:3000`.
 - Recharts.js is used for visualization to simplify chart creation and responsiveness.
 
   React + Vite
+  
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
