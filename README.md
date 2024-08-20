@@ -52,8 +52,16 @@ The application will run on `http://localhost:3000`.
 - Filters are limited to the years 2023 and 2024 for simplicity.
 - Recharts.js is used for visualization to simplify chart creation and responsiveness.
 
-### Deployed API
+### Deployed APP
 The Dashboard is deployed and accessible at: https://analyticsdash.netlify.app/
+
+React + Vite
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+@vitejs/plugin-react uses Babel for Fast Refresh
+@vitejs/plugin-react-swc uses SWC for Fast Refresh
 
 
 
