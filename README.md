@@ -53,7 +53,7 @@ The application will run on `http://localhost:3000`.
 - Recharts.js is used for visualization to simplify chart creation and responsiveness.
 
 ### Deployed API
-The Dashboard is deployed and accessible at: https://your-app-name.vercel.app/api
+The Dashboard is deployed and accessible at: https://analyticsdash.netlify.app/
 
 
 
